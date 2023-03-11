@@ -1,5 +1,6 @@
-import { FC, forwardRef, HTMLAttributes } from "react";
+import { forwardRef, HTMLAttributes } from "react";
 import { cva, VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
 const paragraphVariants = cva(
   "max-w-prose text-slate-700 dark:text-slate-300 mb-2 text-center",
@@ -28,4 +29,6 @@ const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
     );
   }
 );
+
+Paragraph.displayName = "Paragraph";
 export default Paragraph;
