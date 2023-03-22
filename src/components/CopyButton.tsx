@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { Copy } from "lucide-react";
 import { ButtonHTMLAttributes, FC } from "react";
 import Button from "./ui/Button";
@@ -16,6 +17,7 @@ const CopyButton: FC<CopyButtonProps> = ({
 }) => {
   return (
     <Button
+      type="button"
       {...props}
       onClick={() => {
         navigator.clipboard.writeText(valueToCopy);
@@ -26,7 +28,7 @@ const CopyButton: FC<CopyButtonProps> = ({
         });
       }}
       variant="ghost"
-      className={className}
+      className={cn("", className)}
     >
       <Copy className="h-5 w-5" />
     </Button>

@@ -20,6 +20,8 @@ const ApiDashboard = async ({}) => {
 
   const activeApiKey = apiKeys.find((key) => key.enabled);
 
+  console.log(activeApiKey);
+
   if (!activeApiKey) notFound();
 
   const userRequests = await db.apiRequest.findMany({

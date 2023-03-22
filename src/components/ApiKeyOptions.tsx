@@ -21,12 +21,12 @@ interface ApiKeyOptionsProps {
 }
 
 const ApiKeyOptions: FC<ApiKeyOptionsProps> = ({ apiKeyId, key }) => {
-  const [isCreatingNew, setisCreatingNew] = useState<boolean>(false);
+  const [isCreatingNew, setIsCreatingNew] = useState<boolean>(false);
   const [isRevoking, setIsRevoking] = useState<boolean>(false);
   const router = useRouter();
-
+  console.log(key);
   const createNewApiKey = async () => {
-    setisCreatingNew(true);
+    setIsCreatingNew(true);
 
     try {
       await revokeApiKey({ keyId: apiKeyId });
@@ -39,7 +39,7 @@ const ApiKeyOptions: FC<ApiKeyOptionsProps> = ({ apiKeyId, key }) => {
         type: "error",
       });
     } finally {
-      setisCreatingNew(false);
+      setIsCreatingNew(false);
     }
   };
 
@@ -62,7 +62,7 @@ const ApiKeyOptions: FC<ApiKeyOptionsProps> = ({ apiKeyId, key }) => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger disabled={isCreatingNew || isRevoking}>
+      <DropdownMenuTrigger disabled={isCreatingNew || isRevoking} asChild>
         <Button variant="ghost" className="flex gap-2 items-center">
           <p>
             {isCreatingNew
