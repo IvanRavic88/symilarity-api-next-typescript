@@ -16,15 +16,15 @@ import { createApiKey } from "@/helpers/create-api-key";
 import { revokeApiKey } from "@/helpers/revoke-api-key";
 
 interface ApiKeyOptionsProps {
+  apiKeyKey: string;
   apiKeyId: string;
-  key: string;
 }
 
-const ApiKeyOptions: FC<ApiKeyOptionsProps> = ({ apiKeyId, key }) => {
+const ApiKeyOptions: FC<ApiKeyOptionsProps> = ({ apiKeyId, apiKeyKey }) => {
   const [isCreatingNew, setIsCreatingNew] = useState<boolean>(false);
   const [isRevoking, setIsRevoking] = useState<boolean>(false);
   const router = useRouter();
-  console.log(key);
+  console.log(apiKeyKey);
   const createNewApiKey = async () => {
     setIsCreatingNew(true);
 
@@ -79,7 +79,7 @@ const ApiKeyOptions: FC<ApiKeyOptionsProps> = ({ apiKeyId, key }) => {
       <DropdownMenuContent>
         <DropdownMenuItem
           onClick={() => {
-            navigator.clipboard.writeText(key);
+            navigator.clipboard.writeText(apiKeyKey);
             toast({
               title: "Copied",
               message: "API key copied to clipboard",
